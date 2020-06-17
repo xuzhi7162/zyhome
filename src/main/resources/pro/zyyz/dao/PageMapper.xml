@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pro.zyyz.dao.PageMapper">
+    <insert id="addPage">
+        INSERT INTO pageinfo ( pageName, pageUrl,pageClass )
+        VALUES
+            ( #{pageName}, #{pageUrl},#{pageClass});
+    </insert>
+    <update id="updateById">
+        UPDATE pageinfo
+        SET pageName = #{pageName},
+        pageUrl = #{pageUrl},
+        pageClass = #{pageClass}
+        WHERE
+            id = #{id}
+    </update>
+    <delete id="deletePage">
+        DELETE
+        FROM
+            pageinfo
+        WHERE
+            id = #{id}
+    </delete>
+
+
+    <select id="queryAllPage" resultType="pro.zyyz.pojo.Page">
+        SELECT
+            id,
+            pageName,
+            pageUrl,
+            pageClass
+        FROM
+            pageinfo
+    </select>
+    <select id="queryById" resultType="pro.zyyz.pojo.Page">
+        SELECT
+            id,
+            pageName,
+            pageUrl,
+            pageClass
+        FROM
+            pageinfo
+        WHERE
+            id = #{id}
+    </select>
+</mapper>
